@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'users' => 'users#index'
 
   get 'users/show'
@@ -14,8 +15,8 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
-  root 'users#index'
+  resources :destinations
 
-  resources :users
+  root 'users#index'
 
 end

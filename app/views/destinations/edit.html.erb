@@ -1,0 +1,7 @@
+<h1>Edit Destination</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', destination_path %>
+<%= link_to 'Home', destinations_path %>
+<%= link_to 'Remove', destination_path, method: :delete, data: { confirm: 'Are you sure?' } %>

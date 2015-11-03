@@ -1,0 +1,23 @@
+
+<div>
+  <strong>Location:</strong>
+  <%= @destination.location %>
+</div>
+
+<div>
+  <strong>Description:</strong>
+  <%= @destination.description %>
+</div>
+
+<div>
+  <%= image_tag @destination.picture_url %>
+</div>
+
+<div>
+  <strong>Rating:</strong>
+  <%= @destination.rating %>
+</div>
+
+<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.location.tr(' ','+')}&zoom=13&size=300x150&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
+<%= link_to 'Edit', edit_destination_path(@destination) %>
+<%= link_to 'Back', destinations_path %>

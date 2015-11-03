@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		if @user &&  @user.authenticate(params[:login][:password])
 			#set a cookie so our browser knows we are who we claim
 			session[:user_id] = @user.id.to_s
-			redirect_to root_path
+			redirect_to destinations_path
 		else
 			#give em another shot at logging in
 			redirect_to login_path
