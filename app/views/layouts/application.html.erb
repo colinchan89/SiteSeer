@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TravelApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <style>
+    body {
+      background-image: url(http://www.siwallpaper.com/wp-content/uploads/2015/07/world_map_countries_wallpaper_hd.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-family: 'Futura';
+      color: white;
+    }
+    h1 {
+      font-size: 50px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div>
+    <% if current_user %>
+    <%= link_to 'Log Out', logout_path, method: :delete %>
+    <% else %>
+    <%= link_to 'Log In', login_path %>
+    <%= link_to 'Create An Account', new_user_path %>
+    <% end %>
+  </div>
+
+</div>
+<%= yield %>
+
+</body>
+</html>
