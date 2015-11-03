@@ -18,6 +18,7 @@
   <%= @destination.rating %>
 </div>
 
-<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.location.tr(' ','+')}&zoom=13&size=300x150&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
-<%= link_to 'Edit', edit_destination_path(@destination) %>
+<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.location.tr(' ','+')}&zoom=11&size=300x150&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
+<br><%= link_to 'Edit', edit_destination_path(@destination) %>
 <%= link_to 'Back', destinations_path %>
+<%= link_to 'Remove', destination_path, method: :delete, data: { confirm: 'Are you sure?' } %>

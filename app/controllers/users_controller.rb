@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destinations
+    @user = User.find(params[:id])
+    @destinations = @user.destinations
+  end
+
+
   private
   #only allow white-listed fields to be populated and passed
   def user_params

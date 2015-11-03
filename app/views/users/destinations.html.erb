@@ -1,0 +1,51 @@
+<%
+=begin %>
+<% @destinations.each do |d| %>
+<div>
+  <strong>Location:</strong>
+  <%= d.location %>
+</div>
+
+<div>
+  <strong>Description:</strong>
+  <%= d.description %>
+</div>
+
+<div>
+  <%= image_tag d.picture_url %>
+</div>
+
+<div>
+  <strong>Rating:</strong>
+  <%= d.rating %>
+</div>
+
+<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{d.location.tr(' ','+')}&zoom=11&size=300x150&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
+<br><%= link_to 'Edit', edit_destination_path(d) %>
+<%= link_to 'Back', destinations_path %>
+<% end %>
+<%
+=end %>
+<h1>Where I've Been</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Rating</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @destinations.each do |destination| %>
+      <tr>
+        <td><%= destination.location %></td>
+        <td><%= destination.rating %></td>
+        <td><%= link_to 'Show', destination %></td>
+        <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
+        <td><%= link_to 'Remove', destination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

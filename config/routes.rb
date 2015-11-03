@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
+  get 'users/:id/destinations' => 'users#destinations'
+
   post 'users' => 'users#create'
 
 #session routes

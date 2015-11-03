@@ -18,7 +18,7 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    @destination = Destination.new(destination_params)
+    @destination = current_user.destinations.new(destination_params)
 
     respond_to do |format|
       if @destination.save
