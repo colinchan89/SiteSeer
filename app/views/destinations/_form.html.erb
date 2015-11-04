@@ -10,7 +10,24 @@
       </ul>
     </div>
   <% end %>
+  <style>
+    .field{
+    	margin-left: 60px;
+    }
 
+    .actions {
+    	margin-left: 60px;
+    	margin-top: 15px;
+      margin-bottom: 10px;
+    }
+    p {
+    	margin-left: 60px;
+    }
+  </style>
+  <div class="field">
+    <%= f.label :attraction %><br>
+    <%= f.text_field :city %>
+  </div>
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
@@ -22,10 +39,6 @@
   <div class="field">
     <%= f.label :rating %><br>
     <%= f.number_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :picture_url %><br>
-    <%= f.text_field :picture_url %>
   </div>
   <div class="actions">
     <%= f.submit %>

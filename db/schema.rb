@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103174612) do
+ActiveRecord::Schema.define(version: 20151104002152) do
 
   create_table "destinations", force: :cascade do |t|
     t.string   "location"
     t.text     "description"
     t.integer  "rating"
-    t.string   "picture_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.string   "city"
   end
 
   add_index "destinations", ["user_id"], name: "index_destinations_on_user_id"

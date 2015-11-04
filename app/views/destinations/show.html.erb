@@ -1,6 +1,10 @@
+<div>
+  <strong>City:</strong>
+  <%= @destination.city %>
+</div>
 
 <div>
-  <strong>Location:</strong>
+  <strong>State/Country:</strong>
   <%= @destination.location %>
 </div>
 
@@ -10,15 +14,16 @@
 </div>
 
 <div>
-  <%= image_tag @destination.picture_url %>
-</div>
-
-<div>
   <strong>Rating:</strong>
   <%= @destination.rating %>
 </div>
-
-<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.location.tr(' ','+')}&zoom=11&size=300x150&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
-<br><%= link_to 'Edit', edit_destination_path(@destination) %>
+<%= link_to 'Edit', edit_destination_path(@destination) %>
 <%= link_to 'Back', destinations_path %>
 <%= link_to 'Remove', destination_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+
+<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.city.tr(' ','+')}+#{@destination.location.tr(' ','+')}&zoom=12&size=320x320&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
+
+<% @instagram.each do |instagram| %>
+<%= image_tag instagram["images"]["low_resolution"]["url"] %>
+<% end %>

@@ -1,12 +1,14 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @destinations = Destination.all
   end
 
   def show
     @destination = Destination.find(params[:id])
+    @instagram = JSON.parse(Instagram.tag_recent_media(@destination.city.tr(' ','')).to_json)
   end
 
   def new
@@ -46,7 +48,7 @@ class DestinationsController < ApplicationController
   def destroy
     @destination.destroy
     respond_to do |format|
-      format.html { redirect_to destinations_url, notice: 'destination was successfully destroyed.' }
+      format.html { redirect_to destinations_url, notice: 'Destination was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -57,6 +59,6 @@ class DestinationsController < ApplicationController
   end
 
   def destination_params
-    params.require(:destination).permit(:location, :description, :rating, :picture_url, pictures_attributes: [:url, :alt])
+    params.require(:destination).permit(:city, :location, :description, :rating, pictures_attributes: [:url, :alt])
   end
 end
