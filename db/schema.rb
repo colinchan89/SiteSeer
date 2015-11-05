@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151105013253) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "destinations", force: :cascade do |t|
     t.string   "location"
     t.text     "description"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20151105013253) do
     t.string   "city"
   end
 
-  add_index "destinations", ["user_id"], name: "index_destinations_on_user_id"
+  add_index "destinations", ["user_id"], name: "index_destinations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -32,4 +35,5 @@ ActiveRecord::Schema.define(version: 20151105013253) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "destinations", "users"
 end
