@@ -19,8 +19,9 @@ Rails.application.routes.draw do
 #route for all destinations
   get 'users/destinations' => 'users#destinations'
 
+
   resources :users do
-  resources :destinations
+    resources :destinations
   end
 
 end

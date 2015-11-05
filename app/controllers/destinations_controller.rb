@@ -37,6 +37,7 @@ class DestinationsController < ApplicationController
   end
 
   def update
+    @destination = Destination.find(params[:id])
     respond_to do |format|
       if @destination.update(destination_params)
         format.html { redirect_to user_destination_path(current_user, @destination), notice: 'Destination was successfully updated.' }
