@@ -15,10 +15,13 @@
 	h1 {
 		color: white;
 	}
+	p {
+		margin-top: -83px;
+		color: white;
+	}
 </style>
 
 <h1>Create a New Account!</h1>
-
 <div class="form-container">
 <%= form_for @user do |f| %>
 	<%= f.text_field :name, placeholder: 'Name' %><br>

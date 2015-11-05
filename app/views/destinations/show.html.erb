@@ -18,6 +18,7 @@
   .img-container{
     text-align: center;
     margin: 0 auto;
+    padding-top: 10px;
   }
   #location {
     font-size: 20px;
@@ -29,7 +30,9 @@
 <div class="main">
   <%= @destination.city %>
 </div>
+
 <div class="attr-container">
+
   <div id="location">
     <%= @destination.location %>
   </div>
@@ -37,15 +40,7 @@
   <div>
     <%= @destination.description %>
   </div>
-
 </div>
-
-<div class="link-container">
-  <%= link_to 'Edit', edit_user_destination_path(current_user, @destination) %>
-  <%= link_to 'Back', user_destinations_path %>
-  <%= link_to 'Remove', user_destination_path(current_user, @destination), method: :delete, data: { confirm: 'Are you sure?' } %>
-<br></div>
-
 
 <div class="img-container">
 <img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.location.tr(' ','+')}&zoom=12&size=320x320&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >

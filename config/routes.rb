@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   #
   # get 'users/new'
   #
-  # get 'users/:id/destinations' => 'users#destinations'
   #
   # post 'users' => 'users#create'
 
@@ -17,6 +16,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
 
   delete 'logout' => 'sessions#destroy'
+#route for all destinations
+  get 'users/destinations' => 'users#destinations'
 
   resources :users do
   resources :destinations

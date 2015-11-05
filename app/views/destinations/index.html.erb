@@ -13,31 +13,45 @@
   td {
     padding: 5px;
   }
+  .scroll-box {
+    width: 680px;
+    height: 350px;
+    overflow-y: scroll;
+  }
+  ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
 </style>
 
 <h1>My Sites</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Site</th>
-      <th>Location</th>
-      <th>User ID</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @destinations.each do |f| %>
+<div class="scroll-box">
+  <table>
+    <thead>
       <tr>
-        <td><%= f.city %></td>
-        <td><%= f.location %></td>
-        <td><%= f.user_id %></td>
-        <td><%= link_to 'Show', user_destination_path(current_user, f) %></td>
-        <td><%= link_to 'Edit', edit_user_destination_path(current_user, f) %></td>
-        <td><%= link_to 'Remove', user_destination_path(current_user, f), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+        <th>Site</th>
+        <th>Location</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @destinations.each do |f| %>
+        <tr>
+          <td><%= f.city %></td>
+          <td><%= f.location %></td>
+          <td><%= link_to 'Show', user_destination_path(current_user, f) %></td>
+          <td><%= link_to 'Edit', edit_user_destination_path(current_user, f) %></td>
+          <td><%= link_to 'Remove', user_destination_path(current_user, f), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

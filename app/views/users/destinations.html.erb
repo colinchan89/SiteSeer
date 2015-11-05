@@ -1,53 +1,58 @@
-<%
-=begin %>
-<% @destinations.each do |d| %>
-<div>
-  <strong>Location:</strong>
-  <%= d.location %>
-</div>
+<style media>
+  body{
+    min-height: 100vh;
+    max-height: 100vh;
+    background-image: url(http://i.imgur.com/XjcwBwY.jpg?1);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+  }
+  th {
+    font-weight: 500;
+    padding-top: 10px;
+  }
+  td {
+    padding: 5px;
+  }
+  .scroll-box {
+    width: 700px;
+    height: 350px;
+    overflow-y: scroll;
+  }
+  ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, .3);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+</style>
 
-<div>
-  <strong>Description:</strong>
-  <%= d.description %>
-</div>
 
-<div>
-  <%= image_tag d.picture_url %>
-</div>
+<h1>All Sites</h1>
 
-<div>
-  <strong>Rating:</strong>
-  <%= d.rating %>
-</div>
-
-<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{d.location.tr(' ','+')}&zoom=11&size=300x150&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
-<br><%= link_to 'Edit', edit_destination_path(d) %>
-<%= link_to 'Back', destinations_path %>
-<% end %>
-<%
-=end %>
-<!-- <h1>Where I've Been</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>Location</th>
-      <th>Rating</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @destinations.each do |destination| %>
+<div class="scroll-box">
+  <table>
+    <thead>
       <tr>
-        <td><%= destination.city %></td>
-        <td><%= destination.location %></td>
-        <td><%= destination.rating %></td>
-        <td><%= link_to 'Show', destination %></td>
-        <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
-        <td><%= link_to 'Remove', destination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Site</th>
+        <th>Location</th>
+        <th>Creator</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table> -->
+    </thead>
+
+    <tbody>
+      <% @destinations.each do |destination| %>
+        <tr>
+          <td><%= destination.city %></td>
+          <td><%= destination.location %></td>
+          <td><%= destination.user.name if destination.user %></td>
+          <td><%= link_to 'Show', user_destination_path(current_user, destination) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

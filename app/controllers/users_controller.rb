@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   end
 
   def destinations
-    @user = User.find(params[:id])
-    @destinations = @user.destinations
+    @users = User.all
+    @destinations = Destination.all
   end
 
 
