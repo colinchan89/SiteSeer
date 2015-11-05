@@ -1,7 +1,19 @@
-<h1>Edit Destination</h1>
+<style >
+	body {
+		min-height: 100vh;
+		max-height: 100vh;
+		background-image: url(http://i.imgur.com/2jcccCo.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+</style>
+
+<h1>Edit Site</h1>
 
 <%= render 'form' %>
 
-<p><%= link_to 'Back', destination_path %>
-<%= link_to 'Home', destinations_path %>
-<%= link_to 'Remove', destination_path, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<div class="link-container">
+	<%= link_to 'Back', user_destination_path(current_user,@destination) %>
+	<%= link_to 'Home', user_destinations_path(current_user) %>
+	<%= link_to 'Remove', user_destination_path(current_user, @destination), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

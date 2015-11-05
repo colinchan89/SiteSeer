@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'users' => 'users#index'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/:id/destinations' => 'users#destinations'
-
-  post 'users' => 'users#create'
+  root 'users#index'
+  # get 'users' => 'users#index'
+  #
+  # get 'users/show'
+  #
+  # get 'users/new'
+  #
+  # get 'users/:id/destinations' => 'users#destinations'
+  #
+  # post 'users' => 'users#create'
 
 #session routes
   get 'login' => 'sessions#new'
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+  resources :users do
   resources :destinations
-
-  root 'users#index'
+  end
 
 end

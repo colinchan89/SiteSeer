@@ -1,29 +1,56 @@
-<div>
-  <strong>City:</strong>
+<style media="screen">
+  img {
+    margin-left: -4px;
+  }
+  .attr-container {
+    margin-left: 50px;
+  }
+  .link-container {
+    margin-left: 56px;
+    margin-bottom: 5px;
+  }
+  .main{
+    font-weight: 400;
+    font-size: 40px;
+    margin-left: 35px;
+    margin-bottom: -7px;
+  }
+  .img-container{
+    text-align: center;
+    margin: 0 auto;
+  }
+  #location {
+    font-size: 20px;
+    font-weight: 400px;
+    margin-left: -6px;
+  }
+</style>
+
+<div class="main">
   <%= @destination.city %>
 </div>
+<div class="attr-container">
+  <div id="location">
+    <%= @destination.location %>
+  </div>
 
-<div>
-  <strong>State/Country:</strong>
-  <%= @destination.location %>
+  <div>
+    <%= @destination.description %>
+  </div>
+
 </div>
 
-<div>
-  <strong>Description:</strong>
-  <%= @destination.description %>
-</div>
+<div class="link-container">
+  <%= link_to 'Edit', edit_user_destination_path(current_user, @destination) %>
+  <%= link_to 'Back', user_destinations_path %>
+  <%= link_to 'Remove', user_destination_path(current_user, @destination), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br></div>
 
-<div>
-  <strong>Rating:</strong>
-  <%= @destination.rating %>
-</div>
-<%= link_to 'Edit', edit_destination_path(@destination) %>
-<%= link_to 'Back', destinations_path %>
-<%= link_to 'Remove', destination_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-<br>
 
-<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.city.tr(' ','+')}+#{@destination.location.tr(' ','+')}&zoom=12&size=320x320&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
+<div class="img-container">
+<img src=<%= "https://maps.googleapis.com/maps/api/staticmap?center=#{@destination.location.tr(' ','+')}&zoom=12&size=320x320&maptype=roadmap&key=AIzaSyCaxPKuFEU4FfLL9Z9n13jZP_tLIs1RA4Y"%> >
 
 <% @instagram.each do |instagram| %>
 <%= image_tag instagram["images"]["low_resolution"]["url"] %>
 <% end %>
+</div>

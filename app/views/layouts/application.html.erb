@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TravelApp</title>
+  <title>SiteSeer</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <style>
-
+    .navbar-default {
+      font-size: 20px;
+      background-color: rgba(255,255,255,0.8);
+      border: none;
+    }
+    .navbar-brand {
+      font-size: 22px;
+    }
 
 
   </style>
@@ -23,20 +30,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/destinations">Where'd Ya Go?</a>
+      <a class="navbar-brand" href="/">SiteSeer</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-         <% if logged_in? %>
-           <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
-           <li><%= link_to 'All Destinations', destinations_path %></li>
-           <li><%= link_to 'New Destination', new_destination_path %></li>
-         <% else %>
-           <li><%= link_to 'Log In', login_path %></li>
-           <li><%= link_to 'Sign Up!', users_new_path %></li>
-         <% end %>
+        <% if logged_in? %>
+          <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
+          <li><%= link_to 'My Sites', user_destinations_path(current_user) %></li>
+          <li><%= link_to 'New Site', new_user_destination_path(current_user) %></li>
+        <% else %>
+          <li><%= link_to 'Log In', login_path %></li>
+          <li><%= link_to 'Sign Up!', new_user_path %></li>
+        <% end %>
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

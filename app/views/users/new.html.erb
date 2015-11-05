@@ -1,8 +1,29 @@
+<style>
+	.form-container {
+		margin-left: 50px;
+	}
+	input {
+		margin-bottom: 5px;
+	}
+	body {
+		min-height: 100vh;
+		max-height: 100vh;
+		background-image: url(http://i.imgur.com/q9izt5N.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+	h1 {
+		color: white;
+	}
+</style>
+
 <h1>Create a New Account!</h1>
 
+<div class="form-container">
 <%= form_for @user do |f| %>
 	<%= f.text_field :name, placeholder: 'Name' %><br>
 	<%= f.text_field :email, placeholder: 'E-mail' %><br>
 	<%= f.password_field :password, placeholder: 'Password' %><br>
-	<%= f.submit %>
+	<%= f.submit "Submit" %>
 <% end %>
+</div>

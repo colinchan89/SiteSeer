@@ -1,24 +1,42 @@
-<h1>Where I've Been</h1>
+<style media>
+  body{
+    min-height: 100vh;
+    max-height: 100vh;
+    background-image: url(http://i.imgur.com/g6QOXKS.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  th {
+    font-weight: 500;
+    padding-top: 10px;
+  }
+  td {
+    padding: 5px;
+  }
+</style>
+
+<h1>My Sites</h1>
 
 <table>
   <thead>
     <tr>
-      <th>City</th>
+      <th>Site</th>
       <th>Location</th>
-      <th>Rating</th>
+      <th>User ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @destinations.each do |destination| %>
+    <% @destinations.each do |f| %>
       <tr>
-        <td><%= destination.city %></td>
-        <td><%= destination.location %></td>
-        <td><%= destination.rating %></td>
-        <td><%= link_to 'Show', destination %></td>
-        <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
-        <td><%= link_to 'Remove', destination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= f.city %></td>
+        <td><%= f.location %></td>
+        <td><%= f.user_id %></td>
+        <td><%= link_to 'Show', user_destination_path(current_user, f) %></td>
+        <td><%= link_to 'Edit', edit_user_destination_path(current_user, f) %></td>
+        <td><%= link_to 'Remove', user_destination_path(current_user, f), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

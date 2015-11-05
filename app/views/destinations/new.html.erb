@@ -1,4 +1,20 @@
-<h1>Where'd Ya Go?</h1>
+<style>
+	body{
+		min-height: 100vh;
+		max-height: 100vh;
+		background-image: url(http://i.imgur.com/slr2q2e.jpg?1);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+	label {
+		font-weight: 200;
+		margin-top: 9px;
+	}
+</style>
+
+<h1>Create New Site</h1>
 <%= render 'form' %>
 
-<p><%= link_to 'Back', destinations_path %><p>
+<div class="link-container">
+<%= link_to 'Back', user_destinations_path %>
+</div>

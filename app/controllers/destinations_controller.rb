@@ -3,10 +3,13 @@ class DestinationsController < ApplicationController
 
 
   def index
-    @destinations = Destination.all
+    @user = current_user
+    @destinations = @user.destinations.all
+    @destination = Destination.new
   end
 
   def show
+    @user = current_user
     @destination = Destination.find(params[:id])
     @instagram = JSON.parse(Instagram.tag_recent_media(@destination.city.tr(' ','')).to_json)
   end
@@ -24,7 +27,7 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.save
-        format.html { redirect_to @destination, notice: 'Destination was successfully created.' }
+        format.html { redirect_to user_destination_path(current_user, @destination), notice: 'Destination was successfully created.' }
         format.json { render :show, status: :created, location: @destination }
       else
         format.html { render :new }
@@ -36,7 +39,7 @@ class DestinationsController < ApplicationController
   def update
     respond_to do |format|
       if @destination.update(destination_params)
-        format.html { redirect_to @destination, notice: 'Destination was successfully updated.' }
+        format.html { redirect_to user_destination_path(current_user, @destination), notice: 'Destination was successfully updated.' }
         format.json { render :show, status: :ok, location: @destination }
       else
         format.html { render :edit }
@@ -46,19 +49,20 @@ class DestinationsController < ApplicationController
   end
 
   def destroy
+    @destination = Destination.find(params[:id])
     @destination.destroy
     respond_to do |format|
-      format.html { redirect_to destinations_url, notice: 'Destination was successfully destroyed.' }
+      format.html { redirect_to user_destinations_path(current_user), notice: 'Destination was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
   def set_destination
-    @destination = Destination.find(params[:id])
+    @destination = Destination.new
   end
 
   def destination_params
-    params.require(:destination).permit(:city, :location, :description, :rating, pictures_attributes: [:url, :alt])
+    params.require(:destination).permit(:city, :location, :description, :user_id)
   end
 end
