@@ -25,6 +25,11 @@
     font-weight: 400px;
     margin-left: -6px;
   }
+  #site-seen {
+    font-size: 20px;
+    margin-left: -6px;
+    margin-top: -3px;
+  }
 </style>
 
 <div class="main">
@@ -37,9 +42,18 @@
     <%= @destination.location %>
   </div>
 
+  <div id="site-seen">
+  <% if @destination.site_seen == true %>
+      Site<strong>Seen</strong>
+  <% else %>
+      Site<strong>unSeen</strong>
+  <% end %>
+  </div>
+
   <div>
     <%= @destination.description %>
   </div>
+
 </div>
 
 <div class="img-container">

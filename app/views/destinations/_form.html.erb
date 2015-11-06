@@ -11,8 +11,9 @@
     margin-left: 54px;
   }
   #text-field {
-    margin-top: 23px;
+    margin-top: 5px;
     width: 300px;
+    margin-bottom: -5px;
   }
 </style>
 
@@ -30,14 +31,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :city, placeholder: "Site Name" %>
+    <%= f.text_field :city, placeholder: "Site Name (Be Specific)" %>
   </div>
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location, placeholder: "City, State/Country" %>
   </div>
+  <div class="field">
+    <%= f.label :have_you_seen_this_site? %><br>
+    <%= f.check_box :site_seen%>
+  </div>
   <div class="field" id="text-field">
-    <%= f.text_area :description, placeholder: "Write anything else you'd like here!", size: "30x6" %>
+    <%= f.text_area :description, placeholder: "Write a note here! See any other sites? What did you eat?", size: "30x6" %>
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>
